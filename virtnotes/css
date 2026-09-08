@@ -1,0 +1,88 @@
+div.topic-owner .topic-body .contents > .cooked::after {
+  content: "楼主 - www.virtnotes.com"; /* 文字内容，可以改为“楼主” */
+  font-size: small; /* 字体大小 */
+  color: #3ec8ea; /* 字体颜色 */
+  float: right; /* 位置靠右 */
+  font-style: italic; /* 斜体 */
+  font-weight: bold; /* 加粗 */
+}
+
+.custom-user-title-badge {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  min-width: 0;
+  padding: 2px 8px;
+  margin-left: 6px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+@media (max-width: 700px) {
+  .topic-post .names__secondary.custom-user-title-badge,
+  .topic-post .user-title.custom-user-title-badge {
+    display: block;
+    width: fit-content;
+    max-width: calc(100vw - 90px);
+    margin-left: 0;
+    margin-top: 3px;
+    padding: 1px 7px;
+    font-size: 11px;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  .topic-post .names,
+  .topic-post .topic-meta-data {
+    display: block;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+}
+
+/* 赞助商 */
+.custom-user-title-badge.user-title-sponsor {
+  background: linear-gradient(135deg, #fff3cd, #ffe08a);
+  color: #8a5a00;
+  border: 1px solid rgba(138, 90, 0, 0.25);
+}
+
+/* 博主 */
+.custom-user-title-badge.user-title-blogger {
+  background: linear-gradient(135deg, #dbeafe, #93c5fd);
+  color: #1e3a8a;
+  border: 1px solid #60a5fa;
+}
+
+/* 管理员 */
+.custom-user-title-badge.user-title-admin {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  color: #ffffff;
+  border: 1px solid #7f1d1d;
+}
+
+/* 版主 */
+.custom-user-title-badge.user-title-moderator {
+  background: linear-gradient(135deg, #fff1f2, #fecdd3);
+  color: #9f1239;
+  border: 1px solid #fda4af;
+}
+
+/* VIP */
+.custom-user-title-badge.user-title-vip {
+  background: linear-gradient(135deg, #ede9fe, #c4b5fd);
+  color: #5b21b6;
+  border: 1px solid #a78bfa;
+}
+
+/* 贡献者 */
+.custom-user-title-badge.user-title-contributor {
+  background: linear-gradient(135deg, #87A4E9, #2967F7);
+  color: #ffffff;
+  border: 1px solid #16a34a;
+}
