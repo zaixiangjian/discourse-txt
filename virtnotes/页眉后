@@ -1,0 +1,5 @@
+<div class="custom-welcome-banner" style="background-color: var(--custom-banner-bg); padding: 10px; text-align: center;">
+  <strong>真诚待人，友善交流，携手创造一个开放、包容、共同进步的论坛环境</strong>，营造一个尊重、分享、合作的理想论坛  
+  <a href="/faq" style="color: var(--custom-banner-link); margin-left: 10px;">《常见问题解答》</a>
+</div>
+
