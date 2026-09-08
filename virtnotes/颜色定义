@@ -1,0 +1,10 @@
+/* 页眉颜色变量勿删 */
+:root {
+  /* 定义动态颜色变量 */
+  --custom-banner-bg: #{dark-light-choose(#d1f0ff, #03374b)};
+  --custom-banner-text: #{dark-light-choose(#ffffff, #000)};
+  --custom-banner-link: #{dark-light-choose(#50d8ff, #0073ea)};
+}
+
+
+/* 添加其他配置 */
