@@ -1,0 +1,82 @@
+import { apiInitializer } from "discourse/lib/api";
+
+export default apiInitializer((api) => {
+  // Your code here
+});
+
+/* 头衔更改 */
+const TITLE_CLASS_MAP = {
+  "赞助商": "user-title-sponsor",
+  "博主": "user-title-blogger",
+  "管理员": "user-title-admin",
+  "版主": "user-title-moderator",
+  "VIP": "user-title-vip",
+  "贡献者": "user-title-contributor",
+};
+
+const TITLE_SELECTORS = [
+  ".user-title",
+  ".names__secondary",
+  ".user-card .title",
+  ".user-profile .title",
+  ".user-profile-names__title",
+];
+
+function markUserTitles() {
+  const allClasses = Object.values(TITLE_CLASS_MAP);
+
+  document.querySelectorAll(TITLE_SELECTORS.join(",")).forEach((el) => {
+    const text = el.textContent.trim();
+
+    el.classList.remove(...allClasses, "custom-user-title-badge");
+
+    const className = TITLE_CLASS_MAP[text];
+    if (className) {
+      el.classList.add("custom-user-title-badge", className);
+    }
+  });
+}
+
+markUserTitles();
+
+if (!window.__userTitleObserver) {
+  window.__userTitleObserver = new MutationObserver(() => {
+    markUserTitles();
+  });
+
+  window.__userTitleObserver.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+}
+
+/* 外部链接新窗口打开 */
+document.addEventListener(
+  "click",
+  (event) => {
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+
+    const href = link.getAttribute("href");
+    if (!href) return;
+
+    let url;
+    try {
+      url = new URL(href, window.location.origin);
+    } catch {
+      return;
+    }
+
+    const isExternal = url.origin !== window.location.origin;
+
+    if (!isExternal) {
+      return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    window.open(url.href, "_blank", "noopener,noreferrer");
+  },
+  true
+);
